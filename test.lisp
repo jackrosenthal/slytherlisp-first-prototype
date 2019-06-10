@@ -1,0 +1,35 @@
+(defun a (b c &rest d)
+  (map print (list b c d)))
+(a 1 2 3 4 5)
+
+(setq x 0)
+(defun t1 ()
+  (setq x (+ x 2)))
+
+(defun t2 ()
+  (setq x (+ x 2)))
+
+(print "Should be 0" x)
+(t1)
+(print "Should be 2" x)
+(t1)
+(print "Should be 4" x)
+(t2)
+(print "Should be 6" x)
+
+(setq y 0)
+(defun t3 ()
+  (defun t1 ()
+    (setq y (+ y 2)))
+
+  (defun t2 ()
+    (setq y (+ y 2))))
+
+(print "Should be 0" y)
+(t3)
+(t1)
+(print "Should be 2" y)
+(t1)
+(print "Should be 4" y)
+(t2)
+(print "Should be 6" y)
